@@ -34,7 +34,7 @@ public class NotesController {
         return new ResponseEntity<>(notes, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/Get_NoteById")
     public ResponseEntity<Note> getNoteById(@PathVariable Long id) {
         Note note = notebookservice.getNoteById(id);
         if (note != null) {
@@ -44,13 +44,13 @@ public class NotesController {
         }
     }
 
-    @PostMapping
+    @PostMapping ("/Create_Note")
     public ResponseEntity<Note> createNote(@RequestBody NoteDto noteDto) {
         Note createdNote = notebookservice.createNote(noteDto);
         return new ResponseEntity<>(createdNote, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/Update_Note")
     public ResponseEntity<Note> updateNote(@PathVariable Long id, @RequestBody NoteDto noteDto) {
         Note updatedNote = notebookservice.updateNote(id, noteDto);
         if (updatedNote != null) {
@@ -60,7 +60,7 @@ public class NotesController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/Delete_Note")
     public ResponseEntity<Void> deleteNote(@PathVariable Long id) {
         boolean deleted = notebookservice.deleteNote(id);
         if (deleted) {
