@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.Student.Notebook.Entity.LoginDto;
 import com.Student.Notebook.Entity.User;
+import com.Student.Notebook.Entity.UserDto;
 import com.Student.Notebook.Notebookservice.UserService;
 
 @Controller
@@ -22,13 +24,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/Register")
     public ResponseEntity<User> registerUser(@RequestBody UserDto userDto) {
         User registeredUser = userService.registerUser(userDto);
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/Login_User")
     public ResponseEntity<String> loginUser(@RequestBody LoginDto loginDto) {
         String token = userService.loginUser(loginDto);
         if (token != null) {
